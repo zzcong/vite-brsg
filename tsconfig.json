@@ -12,36 +12,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
     "noEmit": true,
     "baseUrl": ".",
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ],
+    "typeRoots": ["./node_modules/@types/", "./types"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "vite.config.ts",
-    "windi.config.ts",
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts", "windi.config.ts", "commitlint.config.cjs"],
+  "exclude": ["node_modules"],
   "references": [
     {
       "path": "./tsconfig.node.json"
