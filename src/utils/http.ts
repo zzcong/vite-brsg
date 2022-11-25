@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from 'axios'
 import { isEmpty } from 'lodash'
-import cookie from 'js-cookie'
-import baseStore from '@/store/baseStore'
-import { storeToRefs } from 'pinia'
-import { toRefs } from 'vue'
+// import cookie from 'js-cookie'
+// import baseStore from '@/store/baseStore'
+// import { storeToRefs } from 'pinia'
+// import { toRefs } from 'vue'
 
-import { HttpResponse } from '../types/http'
+import { HttpResponse } from '@/types/common'
 
-const { userInfo, project_id } = storeToRefs(baseStore())
+// const { userInfo, project_id } = storeToRefs(baseStore())
 
 const http = axios.create({
   baseURL: '/api/meos',
@@ -80,10 +80,10 @@ const download = function download(response: AxiosResponse) {
 http.interceptors.request.use(
   config => {
     // const project_id = store.state.project_id
-    const { pd, user_id, person_id, userName, userId: userCode } = toRefs(userInfo)
-    const groupCode = userInfo.groupCode || cookie.get('groupCode')
+    // const { pd, user_id, person_id, userName, userId: userCode } = userInfo
+    // const groupCode = userInfo.groupCode || cookie.get('groupCode')
     // // 公共参数
-    const params = { user_id, pd, person_id, userName, userCode, groupCode }
+    // const params = { user_id, pd, person_id, userName, userCode, groupCode }
 
     // config.headers.groupCode = groupCode
     // config.headers.userId = user_id

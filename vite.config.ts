@@ -4,6 +4,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import WindiCSS from 'vite-plugin-windicss'
 import checker from 'vite-plugin-checker'
+import qiankun from 'vite-plugin-qiankun'
 
 import path from 'path'
 import { name } from './package.json'
@@ -16,8 +17,7 @@ const imageType = 'jpg,jpeg,png,gif,webp,svg'.split(',')
 // 构建日志输出
 const log = (...rest: string[]) => console.log(chalk.white.bgBlue([...rest, '\n'].join(' ')))
 
-// https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   // env 路径
   const envPath = resolve('env')
   const { VITE_BASE_URL } = loadEnv(mode, envPath)
@@ -26,8 +26,6 @@ export default defineConfig(({ command, mode }) => {
   // build prefix or out dir
   const buildPrefix = `${VITE_BASE_URL}${name}/`
   log('输出目录', buildPrefix)
-
-  //
 
   return {
     envDir: resolve('env'),
@@ -44,6 +42,9 @@ export default defineConfig(({ command, mode }) => {
         eslint: {
           lintCommand: 'eslint "./src/**/*.{ts,tsx}"' // for example, lint .ts & .tsx
         }
+      }),
+      qiankun('energycarbon', {
+        useDevMode: true
       })
     ],
     resolve: {
@@ -68,6 +69,11 @@ export default defineConfig(({ command, mode }) => {
     },
     build: {
       outDir: name,
+      // lib: {
+      //   name: `${name}-[name]`,
+      //   formats: ['umd'],
+      //   entry: resolve('src/main.ts')
+      // },
       cssCodeSplit: true,
       sourcemap: false,
       target: 'modules',

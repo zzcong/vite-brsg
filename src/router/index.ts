@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const history = createWebHistory('/energycarbon')
+const history = createWebHistory((window.__POWERED_BY_QIANKUN__ as boolean) ? `/energycarbon` : `/energycarbon`)
 
 const routes = [
   {
@@ -8,7 +8,7 @@ const routes = [
     redirect: { name: 'home' }
   },
   {
-    path: '/home',
+    path: '/feecarbonrecalculate',
     name: 'home',
     component: () => import('@/views/home/index.vue')
   },
